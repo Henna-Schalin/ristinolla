@@ -4,7 +4,7 @@ import Grid from '@mui/material/Grid'
 import Ristinolla from './components/ristinolla'
 import NavPane from './components/navPane'
 import scroll from './img/scroll.svg'
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import backgroundpic from './img/backgroundpic.svg'
 import CursorEvent from './components/cursorEvent'
 import { PlayerContextProvider, PlayerContext } from './components/playerContext'
@@ -15,7 +15,6 @@ const App = () => {
   const [gameOpen, setGameOpen] = useState(false)
   const { player1, setPlayer1 } = useContext(PlayerContext)
   const { player2, setPlayer2 } = useContext(PlayerContext)
-
 
   const handleClick = () => {
     setGameOpen(true)

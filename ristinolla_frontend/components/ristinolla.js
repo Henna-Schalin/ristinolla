@@ -46,6 +46,9 @@ const Ristinolla = ({ gameOpen, handleClose }) => {
     const [winningRow, setWinningRow] = useState('')
     const [startingPlayer, setStartingPlayer] = useState('')
     const [gameEnd, setGameEnd] = useState(false)
+    const [player1Score, setPlayer1Score] = useState(0)
+    const [player2Score, setPlayer2Score] = useState(0)
+    const [tiesScore, setTiesScore] = useState(0)
 
     //checks for win after each move, also checks if there are 9 moves and makes the game tied if there is no winner.
     useEffect(() => {
@@ -54,6 +57,7 @@ const Ristinolla = ({ gameOpen, handleClose }) => {
 
         if (playerOneResult !== null) { // if player1 wins, sets the winningrow and animates the line. Also initializes the game for db push
             setGameEnd(true)
+            setPlayer1Score(player1Score + 1);
             setLocked([true, true, true, true, true, true, true, true, true])
             const winrow = checkWinRow(playerOneMoves, 2)
             setTimeout(() => {
@@ -72,6 +76,7 @@ const Ristinolla = ({ gameOpen, handleClose }) => {
             handleEnd(newGame)
         } else if (playerTwoResult !== null) { // if player2 wins, sets the winningrow and animates the line. Also initializes the game for db push
             setGameEnd(true)
+            setPlayer2Score(player2Score + 1);
             setLocked([true, true, true, true, true, true, true, true, true])
             const winrow = checkWinRow(playerTwoMoves, 2)
             setTimeout(() => {
@@ -89,6 +94,7 @@ const Ristinolla = ({ gameOpen, handleClose }) => {
             }
             handleEnd(newGame)
         } else if (allMoves === 9) { // if it's a tie, sets the winner as 'tie'. Also initializes the game for db push
+            setTiesScore(tiesScore + 1);
             const winner = 'tie'
             const tiedGame = {
                 player1,
@@ -193,7 +199,7 @@ const Ristinolla = ({ gameOpen, handleClose }) => {
                         setAllMovesList(initialArray)
                         setAllMoves(0)
                         setWinningRow('')
-                    }, 3000)
+                    }, 1200)
                     if (startingPlayer === player1) {
                         setStartingPlayer(player2)
                     } else if (startingPlayer === player2) {
@@ -226,8 +232,6 @@ const Ristinolla = ({ gameOpen, handleClose }) => {
                 onClose={handleClose}
             >
                 <Grow in={gameOpen}
-                    disableBackdropClick
-                    disableEscapeKeyDown
                 >
                     <Grid className="game-modal" style={{
                         display: 'flex',
@@ -241,7 +245,7 @@ const Ristinolla = ({ gameOpen, handleClose }) => {
                         transform: 'translate(-50%, -50%)',
                         backgroundColor: 'transparent',
                         outline: 'none',
-                        '@media (max-width: 767px)': {
+                        '@media (maxWidth: 767px)': {
                             transform: 'scale(0.8)',
                             width: '80%',
                             height: '80%'
@@ -253,8 +257,8 @@ const Ristinolla = ({ gameOpen, handleClose }) => {
 
                         <Grid container className="calligraphy2" sx={{ height: '100%', width: '100%', display: 'flex', alignItems: 'center' }}>
                             <Grid sx={{ height: '275px', width: '730px', display: 'flex', justifyContent: 'center', alignItems: 'flex-end' }}>
-                                {player === 1 && <p>{player1}'s turn!</p>}
-                                {player === 2 && <p>{player2}'s turn!</p>}
+                                {player === 1 && <p style={{position: 'absolute', top: 210}}>{player1}'s turn!</p>}
+                                {player === 2 && <p style={{position: 'absolute', top: 210}}>{player2}'s turn!</p>}
                             </Grid>
                             <Grid sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
                                 <RistinollaCell handleClick={handleClick} showImage={showImage} index={0} bottom={0} height={'150px'} width={'150px'} />
@@ -271,7 +275,13 @@ const Ristinolla = ({ gameOpen, handleClose }) => {
                                 <RistinollaCell handleClick={handleClick} showImage={showImage} index={7} bottom={65} height={'150px'} width={'150px'} />
                                 <RistinollaCell handleClick={handleClick} showImage={showImage} index={8} bottom={65} height={'150px'} width={'150px'} />
                             </Grid>
-                            <Grid sx={{ height: '275px', width: '730px', position: 'relative', bottom: 0 }}></Grid>
+                            <Grid sx={{ height: '275px', width: '730px', position: 'relative', bottom: 30, marginLeft: '220px' }}>
+                                <p>
+                                <span>{player1}'s wins: </span><span style={{position: 'absolute', right: 250}}>{player1Score}</span><br></br>
+                                <span>{player2}'s wins: </span><span style={{position: 'absolute', right: 250}}>{player2Score}</span><br></br>
+                                <span>Ties: </span><span style={{position: 'absolute', right: 250}}>{tiesScore}</span>
+                                </p>
+                            </Grid>
                         </Grid>
                     </Grid>
                 </Grow>

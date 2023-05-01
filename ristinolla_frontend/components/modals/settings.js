@@ -161,7 +161,7 @@ const SettingsModal = ({ type, handleClose, playedGameId }) => {
     return (
         <Grid container style={{ display: 'flex', justifyContent: 'center', width: '80%' }}>
             {type !== 'gameEnd' &&
-                <Grid container xs={12} className="modalBlock" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '30px', backgroundColor: 'rgba(255,255,255,0.2)', borderRadius: '10px', marginBottom: '5px', marginTop: '100px' }}>
+                <Grid container className="modalBlock" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '30px', backgroundColor: 'rgba(255,255,255,0.2)', borderRadius: '10px', marginBottom: '5px', marginTop: '100px' }}>
                     <Grid item xs={6} style={{ display: 'flex', justifyContent: 'flex-start' }}>
                         <div style={{ fontFamily: 'roboto', fontSize: '1.5em', marginLeft: '50px' }}>AI opponent</div>
                     </Grid>
@@ -171,9 +171,9 @@ const SettingsModal = ({ type, handleClose, playedGameId }) => {
                     </Grid>
                 </Grid>
             }
-            <Grid container xs={12} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '30px', backgroundColor: 'rgba(255,255,255,0.2)', borderRadius: '10px', marginBottom: '5px', }}>
+            <Grid container style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '30px', backgroundColor: 'rgba(255,255,255,0.2)', borderRadius: '10px', marginBottom: '5px', }}>
 
-                <Grid container xs={12} spacing={2}>
+                <Grid container spacing={2}>
                     <Grid item xs={6} style={{ display: 'flex', justifyContent: 'flex-start' }}>
                         <div style={{ fontFamily: 'roboto', fontSize: '1.5em', marginLeft: '50px' }}>Player 1</div>
                     </Grid>
@@ -201,18 +201,18 @@ const SettingsModal = ({ type, handleClose, playedGameId }) => {
                     </Grid>
                     <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center' }}>
                         {!checked1 &&
-                            <TextField onChange={(event) => handleChange(event, 3)} id="player1-name" label="Insert Password" variant="outlined" type="password" sx={{ width: '80%' }} />
+                            <TextField onChange={(event) => handleChange(event, 3)} id="player1-password" label="Insert Password" variant="outlined" type="password" sx={{ width: '80%' }} />
                         }
                         {checked1 &&
-                            <TextField onChange={(event) => handleChange(event, 3)} id="player1-name" label="Set Password" variant="outlined" type="password" sx={{ width: '80%' }} />
+                            <TextField onChange={(event) => handleChange(event, 3)} id="player1-password" label="Set Password" variant="outlined" type="password" sx={{ width: '80%' }} />
                         }
                     </Grid>
                 </Grid>
             </Grid>
             {type !== 'gameEnd' &&
-                <Grid container xs={12} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '30px', backgroundColor: 'rgba(255,255,255,0.2)', borderRadius: '10px', marginBottom: '5px', }}>
+                <Grid container style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '30px', backgroundColor: 'rgba(255,255,255,0.2)', borderRadius: '10px', marginBottom: '5px', }}>
 
-                    <Grid container xs={12} spacing={2}>
+                    <Grid container spacing={2}>
                         <Grid item xs={6} style={{ display: 'flex', justifyContent: 'flex-start' }}>
                             <div style={{ fontFamily: 'roboto', fontSize: '1.5em', marginLeft: '50px', color: checkedAI ? 'grey' : 'black' }}>Player 2</div>
                         </Grid>
@@ -240,10 +240,10 @@ const SettingsModal = ({ type, handleClose, playedGameId }) => {
                         </Grid>
                         <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center' }}>
                             {!checked2 &&
-                                <TextField disabled={checkedAI ? true : false} onChange={(event) => handleChange(event, 4)} id="player1-name" label="Insert Password" variant="outlined" type="password" sx={{ width: '80%' }} />
+                                <TextField disabled={checkedAI ? true : false} onChange={(event) => handleChange(event, 4)} id="player2-password" label="Insert Password" variant="outlined" type="password" sx={{ width: '80%' }} />
                             }
                             {checked2 &&
-                                <TextField disabled={checkedAI ? true : false} onChange={(event) => handleChange(event, 4)} id="player1-name" label="Set Password" variant="outlined" type="password" sx={{ width: '80%' }} />
+                                <TextField disabled={checkedAI ? true : false} onChange={(event) => handleChange(event, 4)} id="player2-password" label="Set Password" variant="outlined" type="password" sx={{ width: '80%' }} />
                             }
                         </Grid>
                     </Grid>

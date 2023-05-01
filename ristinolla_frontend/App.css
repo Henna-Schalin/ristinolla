@@ -34,7 +34,7 @@ li {
 }
 
 .stone {
-  background-image: url('img/modalbg.svg');
+  background-image: url('./img/modalbg.svg');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -213,14 +213,51 @@ li {
   transform: rotate(45deg);
 }
 
+@keyframes scaleAnimation {
+  0% {
+    scale: 1;
+  }
+  50% {
+    scale: 1.04;
+  }
+  100% {
+    scale: 1;
+  }
+}
+
 .scroll {
+  cursor: pointer;
   height: 300px;
   position: absolute;
   top: 80%;
   left: 50%;
   transform: translate(-50%, -50%);
+  animation: scaleAnimation 2.5s linear infinite;
+  /* transition: transform 0.2s ease-in-out; */
 }
 
+@keyframes showPrompt {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+
+.prompt {
+  font-size: 50px;
+  animation: showPrompt 4s ease forwards;
+}
+
+
+.scroll:hover {
+  scale: 1.1;
+}
 
 .calligraphy {
   width: 450px;
