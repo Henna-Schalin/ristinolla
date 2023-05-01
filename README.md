@@ -1,6 +1,9 @@
 # Teknologiat
 
-Projektiin on käytetty Reactia + Node.js ja tietokanta toimii mongoDB:ssä. Projekti on myös deployattuna fly.io:n avulla ja se löytyy osoitteesta: https://ristinolla.fly.dev/
+Projektiin on käytetty Reactia + Node.js ja tietokanta toimii mongoDB:ssä. 
+Projekti on myös deployattuna fly.io:n avulla ja se löytyy osoitteesta: 
+
+https://ristinolla.fly.dev/
 
 ## Ohjeet ratkaisun pystyttämiseen
 
